@@ -47,6 +47,7 @@ void tb6612::tb6612_mcpwm_config(tb6612_pwm_config_t *conf) {
 
 	this->pwm_unit = conf->pwm_unit;
 	this->pwm_timer = conf->pwm_timer;
+	this->pwm_operator = conf->pwm_operator;
 }
 
 	// channel class methods
