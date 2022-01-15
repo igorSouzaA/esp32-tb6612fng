@@ -5,6 +5,8 @@
  *      Author: igor_
  */
 
+// TODO Implement Kconfig defined values
+
 #include "TB6612FNG.hpp"
 #include "driver/mcpwm.h"
 #include "driver/gpio.h"
@@ -80,7 +82,7 @@ void tb6612::tb6612_mcpwm_config(tb6612_pwm_config_t *conf) {
 		mcpwm_gpio_init(ptr_tb6612->pwm_unit, pwm_io_signals, conf->pwm_pin);
 	}
 
-	void tb6612::channel::set_duty(float duty_cycle) {
+	void tb6612::channel::set_duty(float duty_cycle) { // TODO Check if the duty_cycle value is between -100..100
 		// Changes the MCPWM duty cycle for the channel
 		mcpwm_set_duty(ptr_tb6612->pwm_unit, ptr_tb6612->pwm_timer, this->pwm_generator, duty_cycle);
 	}

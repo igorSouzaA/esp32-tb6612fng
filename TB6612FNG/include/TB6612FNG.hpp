@@ -13,23 +13,25 @@
 
 /**
  * @brief Configuration parameters of TB6612FNG's MCPWM for tb6612_mcpwm_config function
+ *
+ * @attention MCPWM doesn't support by default high and low frequencies. Check [this topic](https://www.esp32.com/viewtopic.php?f=14&t=5170)
  */
 typedef struct {
-	uint32_t pwm_freq = 1000;   /*!< PWM frequency: MCPWM doesn't support by default high frequencies. Check [this topic](https://www.esp32.com/viewtopic.php?f=14&t=5170) */
-	mcpwm_unit_t pwm_unit;      /*!< MCPWM Unit: One of two available units												   */
-	mcpwm_timer_t pwm_timer;    /*!< MCPWM Timer: One of three available timers per unit 								   */
-	uint8_t pwm_operator;   	/*!< MCPWM operator: One of three available operators per Unit. The x in PWMxA/B 		   */
+	uint32_t pwm_freq = 1000;   /*!< PWM frequency: The frequency at which the PWM will operate	*/
+	mcpwm_unit_t pwm_unit;      /*!< MCPWM Unit: One of two available units	*/
+	mcpwm_timer_t pwm_timer;    /*!< MCPWM Timer: One of three available timers per unit */
+	uint8_t pwm_operator;   	/*!< MCPWM operator: One of three available operators per Unit. The x in PWMxA/B */
 } tb6612_pwm_config_t;
 
 /**
  * @brief Configuration parameters of GPIOs for tb_channel_gpio_config function
  */
 typedef struct {
-	gpio_num_t in1_pin;     	/*!< GPIO pin: First input pin for one channel of the TB6612FNG 							*/
-	gpio_num_t in2_pin;     	/*!< GPIO pin: Second input pin for one channel of the TB6612FNG 							*/
-	gpio_num_t pwm_pin;     	/*!< GPIO pin: Pin designated to the MCPWM output 											*/
-	bool pwm_generator;      	/*!< MCPWM generator:  One of two available generators per Operator. The A or B in PWMxA/B 	*/
-	bool inverted = 0;			/*!< Config: Change the inputs' level to correct for swapped pins 							*/
+	gpio_num_t in1_pin;     	/*!< GPIO pin: First input pin for one channel of the TB6612FNG */
+	gpio_num_t in2_pin;     	/*!< GPIO pin: Second input pin for one channel of the TB6612FNG */
+	gpio_num_t pwm_pin;     	/*!< GPIO pin: Pin designated to the MCPWM output */
+	bool pwm_generator;      	/*!< MCPWM generator:  One of two available generators per Operator. The A or B in PWMxA/B */
+	bool inverted = 0;			/*!< Config: Change the inputs' level to correct for swapped pins */
 } tb6612_channel_gpio_config_t;
 
 /* ^^^^^^^^^
@@ -47,7 +49,7 @@ namespace TB6612FNG {
 class tb6612 {
 private:
 
-	mcpwm_unit_t pwm_unit;		/*!< MCPWM Unit: One of two available units				 */
+	mcpwm_unit_t pwm_unit;		/*!< MCPWM Unit: One of two available units	*/
 	mcpwm_timer_t pwm_timer;	/*!< MCPWM Timer: One of three available timers per unit */
 	uint8_t pwm_operator; 		/*!< MCPWM operator: One of three available operators per Unit. The x in PWMxA/B */
 	gpio_num_t stby_pin;		/*!< GPIO pin: Stand-by pin for */

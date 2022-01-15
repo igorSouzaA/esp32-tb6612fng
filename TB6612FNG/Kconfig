@@ -1,0 +1,102 @@
+menu "TB6612FNG driver"
+
+	menu "MCPWM configurations"
+
+		config MCPWM_FREQ
+			int "MCPWM Frequency for the TB6612FNG"
+			default 1000
+			range 50 1000
+			help
+				The frequency value for the MCPWM library can be neither too high nor too low.
+				
+		config MCPWM_UNIT
+			int "MCPWM Unit for the TB6612FNG"
+			default 0
+			range 0 1
+			help
+				MCPWM has 2 Units available.
+				
+		config MCPWM_TIMER
+			int "MCPWM Timer for the TB6612FNG"
+			default 0
+			range 0 2
+			help
+				Select the MCPWM Timer. Each Unit has 3 Timers.
+		
+		config MCPWM_OPERATOR
+			int "MCPWM Operator for the TB6612FNG"
+			default 0
+			range 0 2
+			help
+				The MCPWM Operator is the X in PWMxA/PWMxB. Each Unit has 3 Operators.		
+	endmenu
+
+	menu "TB6612FNG Channel A"
+	
+		config GPIO_IN1_A
+			int "TB6612FNG's AIN1 input pin"
+			default 14
+			range 12 33
+			help
+				GPIO pin to be connected to the AIN1 pin
+				
+		config GPIO_IN2_A
+			int "TB6612FNG's AIN2 input pin"
+			default 27
+			range 12 33
+			help
+				GPIO pin to be connected to the AIN2 pin
+				
+		config GPIO_PWM_A
+			int "TB6612FNG's PWMA input pin"
+			default 12
+			range 12 33
+			help
+				GPIO pin to be connected to the PWMA pin
+				
+		config CHN_A_INVERTED
+			bool "Is TB6612FNG's channel A inverted?"
+			default "n"
+			help
+				If the input or output pins are inverted, or if the motor B orientation is flipped, choose Y.
+	endmenu
+	
+	
+	menu "TB6612FNG Channel B"
+	
+		config GPIO_IN1_B
+			int "TB6612FNG's BIN1 input pin"
+			default 4
+			range 4 33
+			help
+				GPIO pin to be connected to the BIN1 pin
+				
+		config GPIO_IN2_B
+			int "TB6612FNG's BIN2 input pin"
+			default 15
+			range 12 33
+			help
+				GPIO pin to be connected to the BIN2 pin
+	
+		config GPIO_PWM_B
+			int "TB6612FNG's PWMB input pin"
+			default 16
+			range 12 33
+			help
+				GPIO pin to be connected to the PWMB pin
+	
+		config CHN_B_INVERTED
+			bool "Is TB6612FNG's channel B inverted?"
+			default "y"
+			help
+				If the input or output pins are inverted, or if the motor B orientation is flipped, choose Y.
+	endmenu
+	
+	config GPIO_STBY
+		int "TB6612FNG's STBY input pin"
+		default 25
+		range 12 33
+		help
+			GPIO pin to be connected to the STBY pin
+
+endmenu

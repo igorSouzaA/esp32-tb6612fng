@@ -1,3 +1,7 @@
 /build/
 TB6612FNG/.cproject
 .project
+/example/*/build/
+example/*/sdkconfig.old
+example/*/.cproject
+example/*/sdkconfig
